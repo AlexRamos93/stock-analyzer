@@ -11,4 +11,8 @@ def getRatioBySector(sector):
 
     for row in csv.iterrows():
         if(row[1][0] == sector):
-            return {'Current PE': row[1][2], 'PEG Ratio': row[1][8]}
+            return [row[1][2], row[1][8]]
+
+
+def pegRatio(price, eps, growth):
+    return price / eps / growth
