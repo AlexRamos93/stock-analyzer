@@ -14,8 +14,8 @@ def getRatioBySector(sector):
             return [row[1][2], row[1][8]]
 
 
-def pegRatio(price, eps, growth):
-    return price / eps / growth
+def pegRatio(peRatio, growth):
+    return peRatio / (growth * 100)
 
 
 def stringToFloat(str):

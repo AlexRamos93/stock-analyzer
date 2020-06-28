@@ -3,7 +3,7 @@ from helpers.functions import grahamValue, getRatioBySector
 
 
 def valueCalculation(stock, rateYield):
-    graham = grahamValue(stock.roe, stock.payout, stock.eps, rateYield)
+    graham = grahamValue(stock.roe[0], stock.payout, stock.eps, rateYield)
     ratioSector = getRatioBySector(stock.sector)
 
     return {

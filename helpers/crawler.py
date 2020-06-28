@@ -53,10 +53,12 @@ def crawBrStocks(ticker):
     try:
         values.append(stock.info["beta"])
         values.append(stock.info["previousClose"])
+        values.append(stock.info["sector"])
     except:
         values.append("")
 
     return {
+        "name": ticker,
         "p/b": stringToFloat(values[0]),
         "eps": brMonetaryToNumber(values[1]),
         "ev/ebit": stringToFloat(values[2]),
@@ -73,5 +75,6 @@ def crawBrStocks(ticker):
         "current ratio": stringToFloat(values[13]),
         "div yield": percentageToNumber(values[14]),
         "beta": values[15],
-        "price": values[16]
+        "price": values[16],
+        "sector": values[17]
     }
