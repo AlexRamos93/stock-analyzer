@@ -16,3 +16,25 @@ def getRatioBySector(sector):
 
 def pegRatio(price, eps, growth):
     return price / eps / growth
+
+
+def stringToFloat(str):
+    try:
+        return float(str.decode("utf-8").replace(",", "."))
+    except:
+        return 0.0
+
+
+def percentageToNumber(str):
+    try:
+        number = float(str.decode("utf-8").replace("%", "").replace(",", "."))
+        return number / 100
+    except:
+        return 0.0
+
+
+def brMonetaryToNumber(str):
+    try:
+        return float(str.decode("utf-8").replace("R$", "").replace(",", "."))
+    except:
+        return 0.0

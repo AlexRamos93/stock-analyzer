@@ -4,9 +4,11 @@ from urllib.request import urlopen, Request
 import yfinance as yf
 import requests
 from classes.stock import Stock
+from helpers.functions import stringToFloat, percentageToNumber, brMonetaryToNumber
 
 
 def crawBrStocks(ticker):
+    elementCounter = 0
     values = []
     url = 'https://www.sunoresearch.com.br/acoes/' + ticker
     req = Request(url=url)
@@ -55,21 +57,21 @@ def crawBrStocks(ticker):
         values.append("")
 
     return {
-        "p/b": values[0],
-        "eps": values[1],
-        "ev/ebit": values[2],
-        "debt/eq": values[3],
-        "profit margin": values[4],
-        "ebit margin": values[5],
-        "roic": values[6],
-        "payout": values[7],
-        "pe/ratio": values[8],
-        "gross margin": values[9],
-        "roe": values[10],
-        "roa": values[11],
-        "revenue growth": values[12],
-        "current ratio": values[13],
-        "div yield": values[14],
+        "p/b": stringToFloat(values[0]),
+        "eps": brMonetaryToNumber(values[1]),
+        "ev/ebit": stringToFloat(values[2]),
+        "debt/eq": stringToFloat(values[3]),
+        "profit margin": percentageToNumber(values[4]),
+        "ebit margin": percentageToNumber(values[5]),
+        "roic": percentageToNumber(values[6]),
+        "payout": percentageToNumber(values[7]),
+        "pe/ratio": stringToFloat(values[8]),
+        "gross margin": percentageToNumber(values[9]),
+        "roe": percentageToNumber(values[10]),
+        "roa": percentageToNumber(values[11]),
+        "revenue growth": percentageToNumber(values[12]),
+        "current ratio": stringToFloat(values[13]),
+        "div yield": percentageToNumber(values[14]),
         "beta": values[15],
         "price": values[16]
     }
